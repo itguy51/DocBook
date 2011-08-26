@@ -1,0 +1,66 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <title>PROPER&trade; - Semantic Rich Text Editor</title>  
+  
+  <!-- Styles -->
+  <link href="stylesheets/page.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="stylesheets/proper.css" media="screen" rel="stylesheet" type="text/css" />
+  
+  <!-- Libraries -->
+  <script src="lib/jquery-1.5.min.js"></script>
+  <script src="lib/jquery.hotkeys.js"></script>
+  <script src="lib/underscore.js"></script>
+    
+  <!-- Source -->
+  <script src="proper.js"></script>
+
+  <script>
+    // Proper Init
+    var sect = $('.content').size();
+    function reloadSect(){
+    sect = $('.content').size();
+     $('.content').click(function() {
+	if($(this).hasClass('text')){
+	$('#tools').show();
+	}else{
+	$('#tools').hide();
+	}
+	        editor.activate($(this), {placeholder: 'Enter Text', controlsTarget: $('#tools')});
+      });
+    }
+   
+    $(function() {
+      window.editor = new Proper();
+       $("#addquote").click(function(){
+    	var markup = '<div class="content quote" id="content' + sect + '">"Quote"</div>';
+    	$("#cview").append(markup);
+    	reloadSect();
+    });
+     $("#addcode").click(function(){
+    	var markup = '<div class="content code" id="content' + sect + '">Code</div>';
+    	$("#cview").append(markup);
+    	reloadSect();
+    });
+         $("#addtext").click(function(){
+    	var markup = '<div class="content text" id="content' + sect + '">Text</div>';
+    	$("#cview").append(markup);
+    	reloadSect();
+    });
+     
+    });
+  </script>
+  
+</head>
+<body>
+  
+  <div id="main">
+    <div id="tools"></div>
+    <div id="cview">
+    </div>
+    <div id="inserter" class="controls"><a href="#" id="addquote">Add Quote</a>&nbsp;&nbsp;&nbsp;<a href="#" id="addcode">Add Code</a>&nbsp;&nbsp;&nbsp;<a href="#" id="addtext">Add Text</a>
+  </div>
+
+  
+</body> 
+</html>

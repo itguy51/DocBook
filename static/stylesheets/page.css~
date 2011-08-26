@@ -1,0 +1,121 @@
+/* Page Setup
+/* ------------ */
+
+
+body {
+  padding: 80px;
+  color:#444;
+  font-family:"HelveticaNeue", Helvetica, Arial, sans-serif;
+  font-size:14px;
+  line-height:1.5em;
+}
+
+
+#tools {
+  position: fixed;
+  left: 10px;
+  top: 190px;
+  
+  width: 50px;
+  height: 300px;
+}
+
+* {
+  box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+}
+
+.clear { clear: both; }
+
+:focus {
+  outline: 0;
+}
+
+.empty {
+  background: #eee;
+}
+
+html {overflow:auto;}
+a {text-decoration:none; color:#333; font-style: italic;}
+h1 { margin-left: 10px; color:rgba(148,207,13,1); }
+
+.credits {
+  margin-top: 80px;
+  margin-left: 10px;
+  color: #ccc;
+}
+
+
+#source {
+  float: left;
+  margin-left: 20px;
+  margin-top: 70px;
+  width: 45%;
+  height: 300px;
+  padding: 5px;
+  font-family: monospace;
+  font-size: 13px;
+  color: #777;
+  background: #eee;
+  -webkit-border-radius:5px;
+  -moz-border-radius:   5px;
+  border-radius:        5px;
+}
+
+
+i { font-style: italic; }
+em { font-style: italic; }
+
+strong, b {font-weight: bold;}
+
+/* code */
+u {
+  font-family: Monaco, Consolas, "Lucida Console", monospace;
+  font-size: 12px;
+  padding: 0px 3px;
+  background: white;
+  border: 1px solid #DDD;
+}
+
+.code {
+  font-family: Monaco, Consolas, "Lucida Console", monospace;
+  font-size: 12px;
+  padding: 0px 3px;
+  background: white;
+  border: 1px solid #DDD;
+}
+.quote{
+font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, FreeSerif, serif;
+font-size: 27px;
+font-style: italic;
+}
+.content, .no-markup { 
+  margin-top: 5px; padding: 10px;
+  -webkit-border-radius:5px;
+  -moz-border-radius:   5px;
+  border-radius:        5px;
+  border: 1px dashed transparent;
+}
+
+.no-markup:hover, .content:hover {
+  border: 1px dashed #eee;
+}
+.content[contenteditable=true] { border-color: #aaa; }
+.no-markup[contenteditable=true] { border-color: #aaa; }
+.controls{
+background: rgba(243, 244, 239, 0.8);
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+width: 100%;
+padding: 4px;
+padding-left: 0px;
+
+text-align:center;
+font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, FreeSerif, serif;
+font-size: 16px;
+font-style: normal;
+font-variant: normal;
+font-weight: normal;
+}

@@ -1,0 +1,98 @@
+<HTML> 
+<HEAD> 
+<TITLE>Editor</TITLE> 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <link href="/static/stylesheets/editor.css" media="screen" rel="stylesheet" type="text/css" />
+  
+  <!-- Libraries -->
+  <script src="/static/lib/jquery.hotkeys.js"></script>
+  <script src="/static/lib/underscore.js"></script>
+    
+  <!-- Source -->
+  <script src="/static/proper.js"></script>
+<script type="text/javascript">
+var padid = "<%= padid %>";
+var delay = (function(){
+  var timer = 0;
+  return function(callback, ms){
+    clearTimeout (timer);
+    timer = setTimeout(callback, ms);
+  };
+})();
+
+  var socket = io.connect('http://localhost:8181');
+  socket.on('connls', function (data) {
+    if(data.status == 'ok'){
+    //So, No errors here. Let's verify.
+    socket.emit('gettext', {ident : padid});
+
+    }else{
+    console.log('Error');
+    }
+  });
+  socket.on('databuffer', function(data){
+  if(data.ident == padid){
+    $("#cview").html(data.data);
+    $('[contenteditable]').removeAttr('contenteditable');
+    reloadSect();
+    }
+    
+  });
+  $(document).ready(function(){
+  $("#cview").keyup(function(){
+  	delay(function(){
+  	    socket.emit('postdata', {data: $("#cview").html(), ident : padid});
+    }, 400 );
+  });
+  });
+  
+  
+   var sect = $('.content').size();
+    function reloadSect(){
+    sect = $('.content').size();
+     $('.content').click(function() {
+	if($(this).hasClass('text')){
+	$('#tools').show();
+	}else{
+	$('#tools').hide();
+	}
+	        editor.activate($(this), {placeholder: 'Enter Text', controlsTarget: $('#tools')});
+      });
+    }
+   
+    $(function() {
+    
+      window.editor = new Proper();
+       $("#addquote").click(function(){
+    	var markup = '<div class="content quote" id="content' + sect + '">"Quote"</div>';
+    	$("#cview").append(markup);
+    	reloadSect();
+    });
+     $("#addcode").click(function(){
+    	var markup = '<div class="content code" id="content' + sect + '">Code</div>';
+    	$("#cview").append(markup);
+    	reloadSect();
+    });
+         $("#addtext").click(function(){
+    	var markup = '<div class="content text" id="content' + sect + '">Text</div>';
+    	$("#cview").append(markup);
+    	reloadSect();
+    });
+     
+    });
+  
+</script>
+</HEAD> 
+<body> 
+<div id="main">
+    <div id="tools"></div>
+    <div id="cview">
+    </div>
+    <div id="inserter" class="controls"><a href="#" id="addquote">Add Quote</a>&nbsp;&nbsp;&nbsp;<a href="#" id="addcode">Add Code</a>&nbsp;&nbsp;&nbsp;<a href="#" id="addtext">Add Text</a>&nbsp;&nbsp;&nbsp;<a href="/p/<%= padid %>" id="goview">Open Viewer</a>
+  </div>
+
+ 
+</body> 
+ 
+</HTML>

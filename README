@@ -1,0 +1,10 @@
+Okay, First things first, the frontpage (For Now) is the Etherpad Lite Homepage, Don't worry. It's not permanent. It's just until I can figure out how I should design the frontpage.
+
+DocBook is a simple no-collaboration editor, but in real-time. Meaning, you can have a lot of users, but only one editor. 
+
+*Is this the intended purpose? 
+	Yes. It is designed for presentations.
+
+*How Do I install?
+	It's pretty self-explanatory. Just run 'npm install sqlite3' and then execute 'node server.js'
+
