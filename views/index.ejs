@@ -21,7 +21,7 @@ var delay = (function(){
   };
 })();
 
-  var socket = io.connect('http://localhost:8181');
+  var socket = io.connect();
   socket.on('connls', function (data) {
     if(data.status == 'ok'){
     //So, No errors here. Let's verify.
