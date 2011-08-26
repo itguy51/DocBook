@@ -6,8 +6,14 @@ DocBook is a simple no-collaboration editor, but in real-time. Meaning, you can 
 	Yes. It is designed for presentations.
 
 *How Do I install?
-	It's pretty self-explanatory. Just run 'npm install sqlite3' and then execute 'node server.js'
+	
+	It's pretty self-explanatory. 
+	'mkdir active'
+	'touch data.db'
+	then run 'npm install sqlite3' and then execute 'node server.js'
 
 And, logging Issues and Debugging help. A LOT. This was my first NodeJS application from scratch, so, Please be nice...
 
 It runs on port 2004 and requires DocRoot.
+
+If anything breaks, Delete the node_modules folder and run 'npm install sqlite3 socket.io ueberDB ejs'
